@@ -1,1 +1,91 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+$primary: #333;
+
+h1 {
+	font-size: 5em;
+	font-weight: bold;
+}
+
+
+.second-menu-wrap {
+	background: #ccc;
+}
+.secondary-menu {
+	text-align: right;
+	ul {
+		padding: 0;
+		margin: 0;
+		li {
+			list-style-type: none;
+			display:inline-block;
+			margin: .5rem .5rem;
+			a {
+				color: $primary;
+			}
+		}
+	}
+
+}
+
+.navbar {
+	height: 7rem;
+	background: white !important;
+
+	li {
+		margin: 0 0.5rem;
+		padding: 0 1rem;
+	}
+
+	a {
+		color: $primary !important;
+		margin: 0;
+		padding: .3rem 0;
+	}
+
+	li:last-child, li:nth-last-child(2) {
+		border: 3px solid $primary;
+	}
+}
+
+
+.header-hero {
+	height: 30rem;
+	marigin: 0;
+	background: #E5E5E5;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.cta-list a{
+	width: 15rem;
+	text-align: center;
+	display: block;
+	padding: .5rem 2rem;
+	border: 3px solid $primary;
+	color: $primary;
+	font-weight: bold;
+	margin: 1rem auto;
+}
+
+.hero-cta-button {
+	margin-top: 2rem;
+	background: #ccc;
+}
+
+.quick-links-ul {
+	padding: 0;
+
+	li {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	}
+	a {
+		width: 100%;
+		text-align: center;
+		color: $primary;
+		font-weight: bold;
+	}
+}
+
