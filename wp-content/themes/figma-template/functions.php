@@ -42,3 +42,8 @@ if ( class_exists( 'Jetpack' ) ) {
 foreach ( $understrap_includes as $file ) {
 	require_once get_theme_file_path( $understrap_inc_dir . $file );
 }
+
+function register_my_menu() {
+	register_nav_menu('secondary-menu',__( 'Secondary Menu' ));
+	}
+	add_action( 'init', 'register_my_menu' );
