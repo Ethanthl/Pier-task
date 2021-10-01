@@ -23,25 +23,22 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <body <?php body_class(); ?> <?php understrap_body_attributes(); ?>>
 <?php do_action( 'wp_body_open' ); ?>
-<div class="site" id="page">
 
-	<!-- ******************* The Navbar Area ******************* -->
-	<div class="second-menu-wrap">
+<?php
+
+if ( is_active_sidebar( 'custom-header-widget' ) ) : ?>
+    <div id="header-widget-area" class="chw-widget-area widget-area" role="complementary">
+    <?php dynamic_sidebar( 'custom-header-widget' ); ?>
+    </div>
+
+<?php endif; ?>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
 	<div class="container">
-	<?php wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'container_class' => 'secondary-menu' ) ); ?>
-	</div>
-	</div>
-	<div id="wrapper-navbar">
-
-		<a class="skip-link sr-only sr-only-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'understrap' ); ?></a>
-
-		<nav id="main-nav" class="navbar navbar-expand-md navbar-dark bg-primary" aria-labelledby="main-nav-label">
-
-			<h2 id="main-nav-label" class="sr-only">
-				<?php esc_html_e( 'Main Navigation', 'understrap' ); ?>
-			</h2>
-
-		<?php if ( 'container' === $container ) : ?>
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'your-theme-slug' ); ?>">
+		  <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <?php if ( 'container' === $container ) : ?>
 			<div class="container">
 		<?php endif; ?>
 
@@ -64,30 +61,18 @@ $container = get_theme_mod( 'understrap_container_type' );
 					}
 					?>
 					<!-- end custom logo -->
+		  <?php
+		  wp_nav_menu( array(
+			  'theme_location'    => 'primary',
+			  'depth'             => 2,
+			  'container'         => 'div',
+			  'container_class'   => 'collapse navbar-collapse',
+			  'container_id'      => 'bs-example-navbar-collapse-1',
+			  'menu_class'        => 'nav navbar-nav',
+			  'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+			  'walker'            => new WP_Bootstrap_Navwalker(),
+		  ) );
+		  ?>
+	  </div>
+  </nav>
 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'understrap' ); ?>">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<!-- The WordPress Menu goes here -->
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location'  => 'primary',
-						'container_class' => 'collapse navbar-collapse',
-						'container_id'    => 'navbarNavDropdown',
-						'menu_class'      => 'navbar-nav ml-auto',
-						'fallback_cb'     => '',
-						'menu_id'         => 'main-menu',
-						'depth'           => 2,
-						'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
-					)
-				);
-				?>
-			<?php if ( 'container' === $container ) : ?>
-			</div><!-- .container -->
-			<?php endif; ?>
-
-		</nav><!-- .site-navigation -->
-
-	</div><!-- #wrapper-navbar end -->

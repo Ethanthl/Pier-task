@@ -1,6 +1,10 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
 $primary: #333;
 
+body {
+	overflow-x: hidden;
+}
+
 h1 {
 	font-size: 5em;
 	font-weight: bold;
@@ -18,7 +22,7 @@ h1 {
 		li {
 			list-style-type: none;
 			display:inline-block;
-			margin: .5rem .5rem;
+			margin: 0;
 			a {
 				color: $primary;
 			}
@@ -28,12 +32,77 @@ h1 {
 }
 
 .navbar {
-	height: 7rem;
+	padding: 30px 10px;
 	background: white !important;
+	z-index: 100000;
+
+	@media (max-width: 992px) {
+		display: block;
+		padding: 20px 10px;
+	}
+
+
+	@media (max-width: 1200px) {
+		font-size: 14px;
+	}
+
+	.container {
+		align-self: flex-start;
+		position: relative;
+		padding: 0;
+	}
+
+
+
+	#menu-primary-menu {
+		margin-bottom: 0;
+		@media (max-width: 768px) {
+			margin-bottom: 20px;
+		}
+
+
+	}
+
+	.navbar-toggler{
+		display: none;
+		z-index: 10000;
+		@media (max-width: 992px) {
+			display: block;
+		}
+	}
+
+	.navbar-collapse {
+		@media (max-width: 992px) {
+			padding-top: 20px;
+		}
+	}
+
+
+
+
+	.navbar-toggler {
+		position: absolute;
+		right:0;
+		top: 0;
+	}
+
+	.container {
+
+
+		@media (max-width: 768px) {
+			margin-top: 5px;
+			align-self: flex-start;
+		background: white;
+
+		}
+
+	}
 
 	li {
 		margin: 0 0.5rem;
 		padding: 0 1rem;
+
+
 	}
 
 	a {
@@ -44,48 +113,98 @@ h1 {
 
 	li:last-child, li:nth-last-child(2) {
 		border: 3px solid $primary;
+		transition: .5s linear;
+
+		@media (max-width: 992px) {
+			border: none;
+		}
+
+	}
+
+	li:last-child:hover {
+		background: #555;
+		transition: .5s linear;
+		a span {
+			color: #fff;
+		transition: .5s linear;
+		}
 	}
 }
 
-
-.header-hero {
-	height: 30rem;
-	marigin: 0;
-	background: #E5E5E5;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-}
-
-.cta-list a{
-	width: 15rem;
-	text-align: center;
-	display: block;
-	padding: .5rem 2rem;
-	border: 3px solid $primary;
-	color: $primary;
-	font-weight: bold;
-	margin: 1rem auto;
-}
-
-.hero-cta-button {
-	margin-top: 2rem;
-	background: #ccc;
-}
-
-.quick-links-ul {
-	padding: 0;
-
+#menu-secondary-menu {
+		padding: 0;
+		width: 100%;
+		margin: 0;
 	li {
-	list-style-type: none;
+		list-style-type: none;
+		display:inline-block;
+		font-size: 12px;
+		padding: 10px;
+	}
+	li:last-child {
+		padding-right: 0;
+	}
+
+}
+
+.widget_nav_menu {
 	display: flex;
 	flex-direction: column;
-	}
-	a {
-		width: 100%;
-		text-align: center;
-		color: $primary;
+	justify-content: flex-end;
+}
+
+.navbar-collapse {
+	justify-content: flex-end;
+}
+
+.secondary-wrap .kt-inside-inner-col{
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+#wrapper-footer-full {
+	background: white;
+	padding: 0;
+}
+
+.wp-block-social-links {
+	margin-left: -10px !important;
+}
+#footer-full-content {
+	max-width:100% !important;
+	.widgettitle {
+		font-size: 14px;
+		padding: 15px 0;
 		font-weight: bold;
+	}
+
+	.row {
+
+		flex-direction: column;
+	}
+
+	#block-7, #block-10  {
+		max-width: 100%;
+		padding: 0;
+	}
+
+	#block-10 {
+		.wp-block-columns {
+			margin: 0;
+		}
+		.kt-row-column-wrap {
+			padding: 0;
+		}
+	}
+}
+#menu-footer-items {
+	padding: 0;
+	font-weight: bold;
+	li {
+		list-style-type: none;
+		font-size: 13px;
+		padding-bottom: 15px;
 	}
 }
 

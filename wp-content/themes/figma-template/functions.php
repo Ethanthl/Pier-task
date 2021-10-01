@@ -48,4 +48,29 @@ function register_my_menu() {
 	}
 add_action( 'init', 'register_my_menu' );
 
+function year_shortcode () {
+	$year = date_i18n ('Y');
+	return $year;
+	}
+	add_shortcode ('year', 'year_shortcode');
 
+function wpb_widgets_init() {
+
+    register_sidebar( array(
+        'name'          => 'Custom Header Widget Area',
+        'id'            => 'custom-header-widget',
+        'before_widget' => '<div class="chw-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="chw-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+}
+add_action( 'widgets_init', 'wpb_widgets_init' );
+/**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
